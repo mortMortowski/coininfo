@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Coininfo</title>
+        <meta name="description" content="Everything about crypto!">
+        <meta name="keywords" content="crypto, charts, prices">
+        <meta name="author" content="mb">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="showError"></div>
+            <div class="logo">Coininfo</div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#">Main page</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="coin.html">Experimental</a></li>
+                    <li class="status-li">Status: <span id="status"></span></li>
+                </ul>
+            </div>
+            <div style="clear: both;"></div>
+            <table class="cryptos">
+                <tr>
+                    <th>Coin</th>
+                    <th>Price</th>
+                    <th>Market cap</th>
+                    <th>24h volume</th>
+                    <th>24h change</th>
+                </tr>
+            </table>
+            <!-- <button onclick='showError("test error")'>test error</button> -->
+            <div class="page-select"></div>
+
+            <div class="footer">
+                Copyright &copy; 2023
+            </div>
+
+        </div>
+    <script src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+//fetching server status
+fetch("https://api.coingecko.com/api/v3/ping").then((response) => {
+    if(response.ok){
+        statusSpan.textContent = "Connected";
+        //fetching bitcoin info
+        fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page=1&sparkline=false&price_change_percentage=24h&locale=en").then((response) => {
+            if(response.ok){
+                response.json().then((responseJSON) => {
+                    responseJSON.forEach((coin) => {
+                        let row = cryptosTable.insertRow();
+                        let cell0 = row.insertCell(0);
+                        let cell1 = row.insertCell(1);
+                        let cell2 = row.insertCell(2);
+                        let cell3 = row.insertCell(3);
+                        let cell4 = row.insertCell(4);
+                        cell0.innerHTML = '<img src="'+coin.image+'" alt="'+coin.symbol+'" class="coin-img"> ' + '<div class="coin-name">'+coin.name+'</div>';
+                        cell1.textContent = "$" + coin.current_price;
+                        cell2.textContent = "$" + coin.market_cap;
+                        cell3.textContent = "$" + coin.total_volume;
+                        cell4.textContent = coin.price_change_percentage_24h.toFixed(2) + "%";
+                    });
+                }).catch((error) => {
+                    showError("Cannot load information about coins");
+                });
+            }else{
+                showError("Cannot load data from server");
+            }
+        }).catch((error) => {
+            showError("Cannot connect with server");
+        });
+    }else{
+        statusSpan.textContent = "Connection error";
+    }
+}).catch((error) => {
+    console.log(error);
+    statusSpan.textContent = "Connection error";
+});

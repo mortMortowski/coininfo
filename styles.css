@@ -1,0 +1,135 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+}
+
+.showError{
+    position: fixed;
+    left: 50%;
+    top: 20px;
+    transform: translate(-50%, 0);
+    background-color:rgb(208, 21, 58);
+    color: #eee;
+    border-radius: 10px;
+}
+
+.logo{
+    text-align: center;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+.menu ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #f2a900;
+    overflow: hidden;
+}
+
+.menu li{
+    float: left;
+}
+
+.menu a{
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    display: block;
+}
+
+.menu a:hover{
+    background-color: #e19800;
+}
+
+.status-li{
+    padding: 14px 16px;
+}
+
+.cryptos{
+    margin: 25px auto;
+    border-collapse: collapse;
+}
+
+.cryptos td, th{
+    min-width: 150px;
+    border: 1px solid lightgrey;
+    text-align: center;
+    padding: 10px;
+}
+
+.coin-img{
+    display: inline-block;
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+}
+
+.coin-name{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cryptos td:first-child, th:first-child{
+    text-align: left;
+}
+
+.page-select{
+    text-align: center;
+}
+
+.footer{
+    background-color: #333;
+    color: #eee;
+    padding: 40px 25px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.coin-info{
+    width: 75%;
+    margin: 50px auto;
+}
+
+.coin-brief{
+    border: 2px solid red;
+}
+
+.coin-name2{
+    font-size: 20px;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.coin-price{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.coin-expand{
+    border: 2px solid red;
+}
+
+.chart{
+    border: 1px solid red;
+}
+
+.coin-details{
+    border: 1px solid red;
+}
+
+.coin-about{
+    border: 2px solid red;
+}
+
+.markets{
+    border: 2px solid red;
+}
