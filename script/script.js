@@ -112,11 +112,3 @@ function generatePageBtn(currentPage){
 }
 
 checkPage();
-
-//todo
-//add detailed coin page
-//add a graph that shows price change
-//add ability to sort coins
-//add react framework
-//add ability to create accounts
-//add better styles

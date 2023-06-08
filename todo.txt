@@ -1,0 +1,10 @@
+convert unix time to standard time
+finish making price chart
+export showError function to outside file
+add volume data to chart
+add separate volume chart
+add ability to sort coins
+add react framework
+add ability to create accounts
+add better styles
+center align first column on main page
