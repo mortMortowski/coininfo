@@ -1,5 +1,4 @@
 finish making price chart
-export showError function to outside file
 add volume data to chart
 add separate volume chart
 add ability to sort coins
@@ -9,3 +8,4 @@ add better styles
 center align first column on main page
 get additional crypto information on coin.html page
 add ability to switch to coin.html page when clicking on a coin on main page
+finish adding market data to coin.html page

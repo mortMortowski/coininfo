@@ -79,7 +79,7 @@ function checkPage(){
         }
     }
     generatePageBtn(page);
-    //fetchAPI(page);
+    fetchAPI(page);
 }
 
 //generate page select buttons
