@@ -3,7 +3,6 @@ add volume data to chart
 add separate volume chart
 add ability to sort coins
 add react framework
-add ability to create accounts
 add better styles
 center align first column on main page
 get additional crypto information on coin.html page

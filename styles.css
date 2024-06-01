@@ -133,3 +133,8 @@ body{
 .markets{
     border: 2px solid red;
 }
+
+a{
+    color: black;
+    text-decoration: none;
+}

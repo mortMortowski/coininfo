@@ -5,6 +5,8 @@ const pageSelectDiv = document.getElementsByClassName("page-select")[0];
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 
+import showError from "./showError.js";
+
 //getting data from api
 async function fetchAPI(page){
     try{
@@ -12,6 +14,7 @@ async function fetchAPI(page){
         statusSpan.textContent = "Connected";
         const data = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page='+page+'&sparkline=false&price_change_percentage=24h&locale=en');
         const dataJSON = await data.json();
+        console.log(dataJSON);
         dataJSON.forEach((coin) => {
             let row = cryptosTable.insertRow();
             let cell0 = row.insertCell(0);
@@ -19,27 +22,15 @@ async function fetchAPI(page){
             let cell2 = row.insertCell(2);
             let cell3 = row.insertCell(3);
             let cell4 = row.insertCell(4);
-            cell0.innerHTML = '<img src="'+coin.image+'" alt="'+coin.symbol+'" class="coin-img"> ' + '<div class="coin-name">'+coin.name+'</div>';
+            cell0.innerHTML = '<a href="coin.html?id='+coin.id+'"><img src="'+coin.image+'" alt="'+coin.symbol+'" class="coin-img"> ' + '<div class="coin-name">'+coin.name+'</div></a>';
             cell1.textContent = "$" + coin.current_price;
             cell2.textContent = "$" + coin.market_cap;
             cell3.textContent = "$" + coin.total_volume;
             cell4.textContent = coin.price_change_percentage_24h.toFixed(2) + "%";
         });
     }catch(error){
-        showError("Error when fetching API: " + error);
+        showError("Error when fetching API: " + error, errorDiv);
     }
-}
-
-//function that shows errors
-function showError(text){
-    errorDiv.textContent = text;
-    errorDiv.style.padding = "10px";
-    errorDiv.style.border = "2px solid rgb(173, 14, 46)";
-    setTimeout(() => {
-        errorDiv.textContent = "";
-        errorDiv.style.padding = "0";
-        errorDiv.style.border = "0";
-    }, 2000);
 }
 
 //function for generating dummy data
