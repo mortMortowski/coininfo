@@ -1,10 +1,6 @@
-finish making price chart
-add volume data to chart
-add separate volume chart
+update UI
+show current page
+fix page selector having wrong amount of buttons
 add ability to sort coins
-add react framework
-add better styles
-center align first column on main page
-get additional crypto information on coin.html page
-add ability to switch to coin.html page when clicking on a coin on main page
-finish adding market data to coin.html page
+put fetch function in a separate file
+optimize code

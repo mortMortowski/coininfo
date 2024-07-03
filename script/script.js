@@ -10,9 +10,8 @@ import showError from "./showError.js";
 //getting data from api
 async function fetchAPI(page){
     try{
-        const response = await fetch("https://api.coingecko.com/api/v3/ping");
-        statusSpan.textContent = "Connected";
         const data = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page='+page+'&sparkline=false&price_change_percentage=24h&locale=en');
+        statusSpan.textContent = "Connected";
         const dataJSON = await data.json();
         console.log(dataJSON);
         dataJSON.forEach((coin) => {

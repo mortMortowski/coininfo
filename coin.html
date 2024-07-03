@@ -29,9 +29,9 @@
                 <div class="coin-brief">
                     <div>
                         <img src="img/bitcoin.webp" alt="COIN_SHORT_NAME" class="coin-img">
-                        <span class="coin-name2">COIN_NAME</span>
+                        <span class="coin-name2"></span>
                     </div>
-                    <div class="coin-price">COIN_PRICE</div>
+                    <div class="coin-price"></div>
                 </div>
                 <div class="coin-expand">
                     <div class="chart">
@@ -40,42 +40,24 @@
                     </div>
                     <div class="coin-details">
                         <ul>
-                            <li>Price: COIN_PRICE</li>
-                            <li>24h low / 24h high: COIN_LOW_HIGH</li>
-                            <li>7d low / 7d high: COIN_LOW_HIGH_7D</li>
-                            <li>Trading volume: COIN_VOLUME</li>
-                            <li>Market cap: COIN_MARKET_CAP</li>
-                            <li>Market cap dominance: COIN_DOMINANCE</li>
-                            <li>All-time high: COIN_ALL_TIME_HIGH</li>
-                            <li>All-time low: COIN_ALL_TIME_LOW</li>
+                            <li id="li-price"></li>
+                            <li id="li-low-high"></li>
+                            <li id="li-volume"></li>
+                            <li id="li-market-cap"></li>
+                            <li id="li-all-time"></li>
+                            <li id="li-low"></li>
                         </ul>
                     </div>
                 </div>
                 <div class="coin-about">
-                    <h3>What is COIN_NAME?</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vulputate magna ante, sit amet pellentesque justo dapibus eget. Maecenas aliquet purus sed dignissim ultrices. Suspendisse et nulla arcu. Curabitur nec vulputate nunc, a vehicula lacus. Morbi lacinia, ante a consectetur lacinia, felis velit interdum odio, vitae efficitur nibh massa ac nisl. Proin finibus justo eu metus rutrum, eu ultricies mauris vulputate. Fusce ac interdum sapien, eget vehicula nulla.</p>
+                    <h3 id="coin-about-header"></h3>
+                    <p id="coin-about-desc"></p>
                 </div>
-                <div class="markets">
-                    <table>
+                <div class="platforms">
+                    <table id="platforms-table">
                         <tr>
-                            <th>Exchange</th>
-                            <th>Pair</th>
-                            <th>Price</th>
-                            <th>Spread</th>
-                            <th>24h volume</th>
-                            <th>Volume %</th>
-                            <th>Last updated</th>
-                            <th>Trust score</th>
-                        </tr>
-                        <tr>
-                            <td>jajco kantor</td>
-                            <td>BTC/USDT</td>
-                            <td>$1,000.53</td>
-                            <td>0.05%</td>
-                            <td>$10,000</td>
-                            <td>5.00%</td>
-                            <td>Recently</td>
-                            <td>Good</td>
+                            <th>Network</th>
+                            <th>Contract Address</th>
                         </tr>
                     </table>
                 </div>

@@ -98,10 +98,6 @@ body{
     margin: 50px auto;
 }
 
-.coin-brief{
-    border: 2px solid red;
-}
-
 .coin-name2{
     font-size: 20px;
     font-weight: bold;
@@ -112,29 +108,14 @@ body{
 .coin-price{
     font-size: 26px;
     font-weight: bold;
-}
-
-.coin-expand{
-    border: 2px solid red;
-}
-
-.chart{
-    border: 1px solid red;
-}
-
-.coin-details{
-    border: 1px solid red;
-}
-
-.coin-about{
-    border: 2px solid red;
-}
-
-.markets{
-    border: 2px solid red;
+    margin: 10px 0;
 }
 
 a{
     color: black;
     text-decoration: none;
+}
+
+#coin-about-desc > a{
+    text-decoration: underline;
 }
