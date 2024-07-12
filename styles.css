@@ -94,9 +94,10 @@ body{
 
 .cryptos td, th{
     min-width: 150px;
-    border: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
     text-align: center;
     padding: 10px;
+    margin-bottom: 5px;
 }
 
 .coin-img{
@@ -153,4 +154,39 @@ a{
 
 #coin-about-desc > a{
     text-decoration: underline;
+    color: #eee;
+}
+
+.page-begin{
+    background-color: #dd9b00 !important;
+}
+
+.page-begin:hover{
+    background-color: #be8500 !important;
+}
+
+.page-end{
+    background-color: #dd9b00 !important;
+}
+
+.page-end:hover{
+    background-color: #be8500 !important;
+}
+
+.page-btn{
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+    background-color:rgb(215, 188, 193);
+    border-radius: 10px;
+    border: 1px solid rgb(215, 188, 193);
+}
+
+.page-btn:hover{
+    cursor: pointer;
+    background-color: rgb(171, 149, 153);
+}
+
+.current-page-btn{
+    background-color: rgb(171, 149, 153);
 }

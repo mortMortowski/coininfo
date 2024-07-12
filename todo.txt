@@ -1,8 +1,7 @@
-show current page
-fix page selector having wrong amount of buttons
 add ability to sort coins
 put fetch function in a separate file
 optimize code
 add separators in big numbers
-style table
-fix big in menu styling
+fix bug in menu styling
+add 24h/7d/30d/365d options for price chart
+add current time to price chart

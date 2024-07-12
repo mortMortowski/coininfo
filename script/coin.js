@@ -33,10 +33,14 @@ async function getData(){
         const dataJSON = await data.json();
         updatePage(dataJSON);
         //get data for chart
-        //const timeNow = Date.now() / 60;
-        //const time24hAgo = timeNow - 86400000;
+        const timeNow = Math.floor(Date.now() / 1000);
+        const time24hAgo = timeNow - 86400;
+        const time7dAgo = timeNow - 604800;
+        const time30dAgo = timeNow - 2592000;
+        const time1yAgo = timeNow - 31536000;
+        console.log(timeNow);
         const options = {method: 'GET', headers: {accept: 'application/json'}}
-        const chartData = await fetch("https://api.coingecko.com/api/v3/coins/"+id+"/market_chart/range?vs_currency=usd&from=1719838816&to=1719925216&precision=7", options);
+        const chartData = await fetch("https://api.coingecko.com/api/v3/coins/"+id+"/market_chart/range?vs_currency=usd&from="+time24hAgo+"&to="+timeNow+"&precision=7", options);
         const chartDataJSON = await chartData.json();
         const chartPriceData = chartDataJSON.prices;
         createChart(chartPriceData);
@@ -54,25 +58,15 @@ function updatePage(data){
     coinImg.setAttribute("src", data.image.small);
     coinImg.setAttribute("alt", data.symbol);
     coinName2.textContent = data.name;
-    coinPrice.textContent = "$" + data.market_data.current_price.usd;
-    coinPrice2.textContent = "Price: $" + data.market_data.current_price.usd;
-    liLowHigh.textContent = "24h low / 24h high: $" + data.market_data.low_24h.usd + " / $" + data.market_data.high_24h.usd;
-    liVolume.textContent = "Total Volume: $" + data.market_data.total_volume.usd;
-    liMarketCap.textContent = "Market Cap: $" + data.market_data.market_cap.usd;
-    liAllTime.textContent = "All Time High: $" + data.market_data.ath.usd;
-    liLow.textContent = "All Time Low: $" + data.market_data.atl.usd;
+    coinPrice.textContent = "$" + formatNumber(data.market_data.current_price.usd);
+    coinPrice2.textContent = "Price: $" + formatNumber(data.market_data.current_price.usd);
+    liLowHigh.textContent = "24h low / 24h high: $" + formatNumber(data.market_data.low_24h.usd) + " / $" + formatNumber(data.market_data.high_24h.usd);
+    liVolume.textContent = "Total Volume: $" + formatNumber(data.market_data.total_volume.usd);
+    liMarketCap.textContent = "Market Cap: $" + formatNumber(data.market_data.market_cap.usd);
+    liAllTime.textContent = "All Time High: $" + formatNumber(data.market_data.ath.usd);
+    liLow.textContent = "All Time Low: $" + formatNumber(data.market_data.atl.usd);
     coinAboutHeader.textContent = "What is " + data.name + "?";
     coinAboutDesc.innerHTML = data.description.en;
-
-    //fix this
-    /*
-    data.platforms.forEach((platform) => {
-        let row = platformsTable.insertRow();
-        let cell0 = row.insertCell(0);
-        let cell1 = row.insertCell(1);
-        cell0.textContent = platform;
-    });
-    */
 }
 
 function createChart(apiData){
@@ -103,6 +97,10 @@ function createChart(apiData){
             },
             scales: {
                 x: {ticks: {display: false}}
+            },
+            elements:{
+                point: {pointStyle: false},
+                line: {cubicInterpolationMode: 'monotone'}
             }
         }
     });
@@ -111,4 +109,8 @@ function createChart(apiData){
 function unixToDate(unixTime){
     let date = new Date(unixTime);
     return date.toLocaleString('en-GB', {timezone: 'GMT+2'});
+}
+
+function formatNumber(number){
+    return number;
 }

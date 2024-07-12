@@ -79,20 +79,24 @@ function generatePageBtn(currentPage){
     let endBtn = document.createElement("button");
 
     beginBtn.innerHTML = "&lt;";
-    beginBtn.className = "page-begin";
+    beginBtn.className = "page-begin page-btn";
     beginBtn.onclick = function () {changePage(1);};
 
     endBtn.innerHTML = "&gt;";
-    endBtn.className = "page-end";
+    endBtn.className = "page-end page-btn";
     endBtn.onclick = function () {changePage(50);};
 
     pageSelectDiv.appendChild(beginBtn);
 
-    for(let i=currentPage-3; i<currentPage+3; i++){
+    for(let i=currentPage-1; i<=currentPage+1; i++){
         if(i > 0 && i < 51){
             let pageBtn = document.createElement("button");
             pageBtn.innerHTML = i;
-            pageBtn.className = "page-number";
+            if(currentPage == i){
+                pageBtn.className = "page-number page-btn current-page-btn";
+            }else{
+                pageBtn.className = "page-number page-btn";
+            }
             pageBtn.onclick = function () {changePage(i);};
             pageSelectDiv.appendChild(pageBtn);
         }
