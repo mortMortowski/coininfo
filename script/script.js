@@ -4,29 +4,20 @@ const errorDiv = document.getElementsByClassName("showError")[0];
 const pageSelectDiv = document.getElementsByClassName("page-select")[0];
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
+const sort = document.getElementById("sort");
+const sortDir = document.getElementById("sort-direction");
+let page;
 
 import showError from "./showError.js";
 
 //getting data from api
-async function fetchAPI(page){
+async function fetchAPI(page, url){
     try{
-        const data = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page='+page+'&sparkline=false&price_change_percentage=24h&locale=en');
+        const data = await fetch(url);
         statusSpan.textContent = "Connected";
         const dataJSON = await data.json();
         console.log(dataJSON);
-        dataJSON.forEach((coin) => {
-            let row = cryptosTable.insertRow();
-            let cell0 = row.insertCell(0);
-            let cell1 = row.insertCell(1);
-            let cell2 = row.insertCell(2);
-            let cell3 = row.insertCell(3);
-            let cell4 = row.insertCell(4);
-            cell0.innerHTML = '<a href="coin.html?id='+coin.id+'"><img src="'+coin.image+'" alt="'+coin.symbol+'" class="coin-img"> ' + '<div class="coin-name">'+coin.name+'</div></a>';
-            cell1.textContent = "$" + coin.current_price;
-            cell2.textContent = "$" + coin.market_cap;
-            cell3.textContent = "$" + coin.total_volume;
-            cell4.textContent = coin.price_change_percentage_24h.toFixed(2) + "%";
-        });
+        renderTable(dataJSON);
     }catch(error){
         showError("Error when fetching API: " + error, errorDiv);
     }
@@ -57,7 +48,6 @@ function changePage(pnumber){
 //check current page
 function checkPage(){
     const pnumberExists = urlParams.has('page');
-    let page;
     if(!pnumberExists){
         page = 1;
     }else{
@@ -69,7 +59,7 @@ function checkPage(){
         }
     }
     generatePageBtn(page);
-    fetchAPI(page);
+    fetchAPI(page, 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=25&page='+page+'&sparkline=false&price_change_percentage=24h&locale=en');
 }
 
 //generate page select buttons
@@ -104,5 +94,43 @@ function generatePageBtn(currentPage){
 
     pageSelectDiv.appendChild(endBtn);
 }
+
+function renderTable(data){
+    //clear table
+    cryptosTable.getElementsByTagName("tbody")[0].innerHTML = cryptosTable.rows[0].innerHTML;
+
+    //add data to table
+    data.forEach((coin) => {
+        let row = cryptosTable.insertRow();
+        let cell0 = row.insertCell(0);
+        let cell1 = row.insertCell(1);
+        let cell2 = row.insertCell(2);
+        let cell3 = row.insertCell(3);
+        let cell4 = row.insertCell(4);
+        cell0.innerHTML = '<a href="coin.html?id='+coin.id+'"><img src="'+coin.image+'" alt="'+coin.symbol+'" class="coin-img"> ' + '<div class="coin-name">'+coin.name+'</div></a>';
+        cell1.textContent = "$" + coin.current_price;
+        cell2.textContent = "$" + coin.market_cap;
+        cell3.textContent = "$" + coin.total_volume;
+        if(coin.price_change_percentage_24h == null){
+            cell4.textContent = "0";
+        }else{
+            cell4.textContent = coin.price_change_percentage_24h.toFixed(2) + "%";
+        }
+    });
+}
+
+sort.addEventListener("change", () => {
+    let newUrlParam = sort.value + '_' + sortDir.value;
+    const newUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order='+newUrlParam+'&per_page=25&page='+page+'&sparkline=false&price_change_percentage=24h&locale=en';
+    console.log(newUrl);
+    fetchAPI(page, newUrl);
+});
+
+sortDir.addEventListener("change", () => {
+    let newUrlParam = sort.value + '_' + sortDir.value;
+    const newUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order='+newUrlParam+'&per_page=25&page='+page+'&sparkline=false&price_change_percentage=24h&locale=en';
+    console.log(newUrl);
+    fetchAPI(page, newUrl);
+});
 
 checkPage();

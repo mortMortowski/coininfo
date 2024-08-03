@@ -190,3 +190,20 @@ a{
 .current-page-btn{
     background-color: rgb(171, 149, 153);
 }
+
+.sorting{
+    margin-top: 25px;
+    text-align: right;
+    margin-right: 190px;
+}
+
+.sorting > select{
+    background-color: rgb(148, 148, 148);
+    color: #eee;
+    width: 100px;
+    height: 30px;
+}
+
+.sorting > select:hover{
+    cursor: pointer;
+}

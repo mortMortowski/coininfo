@@ -1,7 +1,11 @@
-add ability to sort coins
 put fetch function in a separate file
 optimize code
 add separators in big numbers
 fix bug in menu styling
 add 24h/7d/30d/365d options for price chart
 add current time to price chart
+save sorting and price chart options in cookies
+add ability to save favorite coins
+make responsive design
+add the ability to change currency
+add an indicator that data is loading

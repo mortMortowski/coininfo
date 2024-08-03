@@ -25,19 +25,34 @@
                 </ul>
             </div>
             <div style="clear: both;"></div>
+
+            <div class="sorting">
+                <span>Sort by</span> 
+                <select id="sort">
+                    <option value="id">Name</option>
+                    <option value="market_cap" selected>Market cap</option>
+                    <option value="volume">24h volume</option>
+                </select>
+                <select id="sort-direction">
+                    <option value="desc" selected>Descending</option>
+                    <option value="asc">Ascending</option>
+                </select>
+            </div>
+
             <table class="cryptos">
-                <tr>
-                    <th>Coin</th>
-                    <th>Price</th>
-                    <th>Market cap</th>
-                    <th>24h volume</th>
-                    <th>24h change</th>
-                </tr>
+                    <tr>
+                        <th>Coin</th>
+                        <th>Price</th>
+                        <th>Market cap</th>
+                        <th>24h volume</th>
+                        <th>24h change</th>
+                    </tr>
             </table>
             <div class="page-select"></div>
 
             <div class="footer">
-                Copyright &copy; 2024
+                Copyright &copy; 2024 <br/>
+                Made by Maciej Bajer
             </div>
 
         </div>
